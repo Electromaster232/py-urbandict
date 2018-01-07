@@ -43,7 +43,7 @@ class UrbanDictParser(HTMLParser):
             if div_class == 'def-header':
                 # NOTE: assume 'word' is the first section
                 self.translations.append(
-                    {'word': '', 'def': '', 'example': ''})
+                    {'word': '', 'definition': '', 'example': ''})
 
     def handle_endtag(self, tag):
         if tag == 'div':
@@ -55,7 +55,7 @@ class UrbanDictParser(HTMLParser):
             return
 
         if self._section == 'meaning':
-            self._section = 'def'
+            self._section = 'definition'
         elif self._section == 'def-header':
             data = data.strip()
             self._section = 'word'
